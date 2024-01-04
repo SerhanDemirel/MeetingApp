@@ -1,0 +1,31 @@
+﻿@model UserInfo
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var classname = Model.WillAttend == true ? "primary" : "danger";
+}
+
+<main class="text-center">
+    <h1 class="h4">Basvuru Detayi</h1>
+    <p>
+        <span class="badge text-bg-@classname">
+            @if(Model.WillAttend==true)
+            {
+                <text>Katiliyor</text>
+            }
+            else
+            {
+                <text>Katilmiyor</text>
+            }
+        </span>
+    </p>
+    <p>Isim : @Model.Name</p>
+    <p>Email: @Model.Email</p>
+    <p>Phone: @Model.Phone</p>
+    <a asp-controller="Meeting" asp-action="List" class="btn btn-outline-@classname">Participant List</a>
+    <a></a>
+
+</main>
+

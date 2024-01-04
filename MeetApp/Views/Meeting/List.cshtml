@@ -1,0 +1,49 @@
+﻿@model List<UserInfo>
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main class="text-center">
+<h1 class="h4">Toplanti Katilim Listesi</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>AD</td>
+            <td>EMAIL</td>
+            <td>KATILIM DURUMU</td>
+            <td>DETAY</td>
+
+        </tr>
+    </thead>
+    <tbody>
+            @{
+                int i = 0;
+            }
+
+            @foreach (var user in Model)
+            {
+
+              var durum = user.WillAttend == true ? "Evet" : "Hayir";
+              var classname = user.WillAttend == true ? "table-success" : "table-danger";
+                if (user.WillAttend == true)
+                {
+                    i++;
+                }
+                <tr class="@classname">
+              <td>@user.Name</td>
+              <td>@durum</td>
+              <td>
+                 <a class="btn btn-sm btn-primary" href="/meeting/details/@user.Id">Detay</a>
+                 <a class="#"></a>
+              </td>
+            </tr>
+                
+            }
+        
+    </tbody>
+</table>
+  <div class="card">
+      <p>Katilimci Sayisi:@i</p>
+  </div>
+</main>
+

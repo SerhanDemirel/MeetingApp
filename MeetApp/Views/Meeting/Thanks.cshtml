@@ -1,0 +1,24 @@
+﻿@model UserInfo
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<main class="text-center">
+    <h1 class="h1">Toplanti Ozeti</h1>
+
+
+    @if (Model.WillAttend == true)
+    {
+        <p> Tesekkurler @Model.Name toplantiya sizinle birlikte @ViewBag.UserCount  kisi katiliyor</p>
+        <a href="/meeting/list" class="btn btn-sm btn-outline-primary">Katilimcilari listele</a>
+    }
+    else
+    {
+        <p>@Model.Name , katilmadigindan dolayi uzgunuz </p>
+        <a href="/meeting/apply" class="btn btn-sm btn-outline-primary">Basvuru formu</a>
+
+    }
+</main>
+
